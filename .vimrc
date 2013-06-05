@@ -59,6 +59,11 @@
         endif
     " }
 
+    Bundle 'gmarik/vundle'
+    Bundle 'terryma/vim-multiple-cursors'
+    Bundle 'w0ng/vim-hybrid'
+
+    filetype plugin indent on
 " }
 
 " General {
@@ -93,7 +98,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
+    ""set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
 
     " Setting up the directories {
@@ -118,10 +123,11 @@
 " }
 
 " Vim UI {
+    ""Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
-        color solarized                 " Load a colorscheme
+        color hybrid                 " Load a colorscheme
     endif
         let g:solarized_termtrans=1
         let g:solarized_contrast="high"
@@ -177,10 +183,10 @@
 
     set nowrap                      " Wrap long lines
     set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=4                " Use indents of 4 spaces
+    set shiftwidth=2                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=4                   " An indentation every four columns
-    set softtabstop=4               " Let backspace delete indent
+    set tabstop=2                   " An indentation every four columns
+    set softtabstop=2               " Let backspace delete indent
     "set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
@@ -317,28 +323,28 @@
     " }
 
     " OmniComplete {
-        if has("autocmd") && exists("+omnifunc")
-            autocmd Filetype *
-                \if &omnifunc == "" |
-                \setlocal omnifunc=syntaxcomplete#Complete |
-                \endif
-        endif
+    ""    if has("autocmd") && exists("+omnifunc")
+    ""        autocmd Filetype *
+    ""            \if &omnifunc == "" |
+    ""            \setlocal omnifunc=syntaxcomplete#Complete |
+    ""            \endif
+    ""    endif
 
-        hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
-        hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
-        hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
+    ""    hi Pmenu  guifg=#000000 guibg=#F8F8F8 ctermfg=black ctermbg=Lightgray
+    ""    hi PmenuSbar  guifg=#8A95A7 guibg=#F8F8F8 gui=NONE ctermfg=darkcyan ctermbg=lightgray cterm=NONE
+    ""    hi PmenuThumb  guifg=#F8F8F8 guibg=#8A95A7 gui=NONE ctermfg=lightgray ctermbg=darkcyan cterm=NONE
 
-        " Some convenient mappings
-        inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-        inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-        inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-        inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-        inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
-        inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+    ""    " Some convenient mappings
+    ""    inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+    ""    inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+    ""    inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+    ""    inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+    ""    inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+    ""    inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
-        " Automatically open and close the popup menu / preview window
-        au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        set completeopt=menu,preview,longest
+    ""    " Automatically open and close the popup menu / preview window
+    ""    au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+    ""    set completeopt=menu,preview,longest
     " }
 
     " Ctags {
@@ -458,14 +464,14 @@
     "}
 
     " neocomplcache {
-        let g:acp_enableAtStartup = 0
-        let g:neocomplcache_enable_at_startup = 1
-        let g:neocomplcache_enable_camel_case_completion = 1
-        let g:neocomplcache_enable_smart_case = 1
-        let g:neocomplcache_enable_underbar_completion = 1
-        let g:neocomplcache_enable_auto_delimiter = 1
-        let g:neocomplcache_max_list = 15
-        let g:neocomplcache_force_overwrite_completefunc = 1
+    ""    let g:acp_enableAtStartup = 0
+    ""    let g:neocomplcache_enable_at_startup = 1
+    ""    let g:neocomplcache_enable_camel_case_completion = 1
+    ""    let g:neocomplcache_enable_smart_case = 1
+    ""    let g:neocomplcache_enable_underbar_completion = 1
+    ""    let g:neocomplcache_enable_auto_delimiter = 1
+    ""    let g:neocomplcache_max_list = 15
+    ""    let g:neocomplcache_force_overwrite_completefunc = 1
 
         " SuperTab like snippets behavior.
         imap <silent><expr><TAB> neosnippet#expandable() ?
@@ -474,17 +480,17 @@
         smap <TAB> <Right><Plug>(neosnippet_jump_or_expand)
 
         " Define dictionary.
-        let g:neocomplcache_dictionary_filetype_lists = {
-                    \ 'default' : '',
-                    \ 'vimshell' : $HOME.'/.vimshell_hist',
-                    \ 'scheme' : $HOME.'/.gosh_completions'
-                    \ }
+    ""    let g:neocomplcache_dictionary_filetype_lists = {
+    ""                \ 'default' : '',
+    ""                \ 'vimshell' : $HOME.'/.vimshell_hist',
+    ""                \ 'scheme' : $HOME.'/.gosh_completions'
+    ""                \ }
 
-        " Define keyword.
-        if !exists('g:neocomplcache_keyword_patterns')
-            let g:neocomplcache_keyword_patterns = {}
-        endif
-        let g:neocomplcache_keyword_patterns._ = '\h\w*'
+    ""    " Define keyword.
+    ""    if !exists('g:neocomplcache_keyword_patterns')
+    ""        let g:neocomplcache_keyword_patterns = {}
+    ""    endif
+    ""    let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
         " Plugin key-mappings.
 
@@ -493,61 +499,61 @@
         " let g:spf13_no_neosnippet_expand = 1
         " in your .vimrc.bundles.local file
 
-        if !exists('g:spf13_no_neosnippet_expand')
-            imap <C-k> <Plug>(neosnippet_expand_or_jump)
-            smap <C-k> <Plug>(neosnippet_expand_or_jump)
-        endif
+    ""    if !exists('g:spf13_no_neosnippet_expand')
+    ""        imap <C-k> <Plug>(neosnippet_expand_or_jump)
+    ""        smap <C-k> <Plug>(neosnippet_expand_or_jump)
+    ""    endif
 
-        inoremap <expr><C-g> neocomplcache#undo_completion()
-        inoremap <expr><C-l> neocomplcache#complete_common_string()
-        inoremap <expr><CR> neocomplcache#complete_common_string()
+    ""    inoremap <expr><C-g> neocomplcache#undo_completion()
+    ""    inoremap <expr><C-l> neocomplcache#complete_common_string()
+    ""    inoremap <expr><CR> neocomplcache#complete_common_string()
 
-        " <TAB>: completion.
-        inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+    ""    " <TAB>: completion.
+    ""    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    ""    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-        " <CR>: close popup
-        " <s-CR>: close popup and save indent.
-        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-        inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    ""    " <CR>: close popup
+    ""    " <s-CR>: close popup and save indent.
+    ""    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+    ""    inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
-        " <C-h>, <BS>: close popup and delete backword char.
-        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-        inoremap <expr><C-y> neocomplcache#close_popup()
+    ""    " <C-h>, <BS>: close popup and delete backword char.
+    ""    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    ""    inoremap <expr><C-y> neocomplcache#close_popup()
 
-        " Enable omni completion.
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    ""    " Enable omni completion.
+    ""    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    ""    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    ""    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    ""    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    ""    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    ""    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-        " Enable heavy omni completion.
-        if !exists('g:neocomplcache_omni_patterns')
-            let g:neocomplcache_omni_patterns = {}
-        endif
-        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-        let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-        let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-        let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-        let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+    ""    " Enable heavy omni completion.
+    ""    if !exists('g:neocomplcache_omni_patterns')
+    ""        let g:neocomplcache_omni_patterns = {}
+    ""    endif
+    ""    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    ""    let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    ""    let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    ""    let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    ""    let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
-        " Use honza's snippets.
-        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+    ""    " Use honza's snippets.
+    ""    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
-        " Enable neosnippet snipmate compatibility mode
-        let g:neosnippet#enable_snipmate_compatibility = 1
+    ""    " Enable neosnippet snipmate compatibility mode
+    ""    let g:neosnippet#enable_snipmate_compatibility = 1
 
-        " For snippet_complete marker.
-        if has('conceal')
-            set conceallevel=2 concealcursor=i
-        endif
+    ""    " For snippet_complete marker.
+    ""    if has('conceal')
+    ""        set conceallevel=2 concealcursor=i
+    ""    endif
 
-        " Disable the neosnippet preview candidate window
-        " When enabled, there can be too much visual noise
-        " especially when splits are used.
-        set completeopt-=preview
+    ""    " Disable the neosnippet preview candidate window
+    ""    " When enabled, there can be too much visual noise
+    ""    " especially when splits are used.
+    ""    set completeopt-=preview
     " }
 
     " UndoTree {
@@ -557,16 +563,16 @@
     " }
 
     " indent_guides {
-        if !exists('g:spf13_no_indent_guides_autocolor')
-            let g:indent_guides_auto_colors = 1
-        else
-            " For some colorschemes, autocolor will not work (eg: 'desert', 'ir_black')
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
-        endif
-        let g:indent_guides_start_level = 2
-        let g:indent_guides_guide_size = 1
-        let g:indent_guides_enable_on_vim_startup = 1
+    ""    if !exists('g:spf13_no_indent_guides_autocolor')
+    ""        let g:indent_guides_auto_colors = 1
+    ""    else
+    ""        " For some colorschemes, autocolor will not work (eg: 'desert', 'ir_black')
+    ""        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#212121 ctermbg=3
+    ""        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#404040 ctermbg=4
+    ""    endif
+    ""    let g:indent_guides_start_level = 2
+    ""    let g:indent_guides_guide_size = 1
+    ""    let g:indent_guides_enable_on_vim_startup = 1
     " }
 
 " }
@@ -580,12 +586,12 @@
         if has("gui_gtk2")
             set guifont=Andale\ Mono\ Regular\ 16,Menlo\ Regular\ 15,Consolas\ Regular\ 16,Courier\ New\ Regular\ 18
         elseif has("gui_mac")
-            set guifont=Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+            ""set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
         elseif has("gui_win32")
             set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
         endif
         if has('gui_macvim')
-            set transparency=5      " Make the window slightly transparent
+            ""set transparency=5      " Make the window slightly transparent
         endif
     else
         if &term == 'xterm' || &term == 'screen'
@@ -708,3 +714,7 @@
 " Finish local initializations {
     call InitializeDirectories()
 " }
+"
+" No Idea why this needs to be here, but it is the only way it works
+set guifont=Source\ Code\ Pro\ Light\ for\ Powerline:h14,Andale\ Mono\ Regular:h16,Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
+
